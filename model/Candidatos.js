@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
 
-const Puesto = sequelize.define("PuestoElectivo", {
+const Candidato = sequelize.define("Candidatos", {
     Id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -13,15 +13,27 @@ const Puesto = sequelize.define("PuestoElectivo", {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    Descripcion: {
+    Apellido: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    PartidoPerteneciente: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+    Puesto: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+    FotoPerfil: {
         type: Sequelize.TEXT('long'),
         allowNull: false,
     },
     Estado: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
-    },
+        allowNull: false,
+    }
 
 });
 
-module.exports = Puesto;
+module.exports = Candidato;
