@@ -1,0 +1,103 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puestos</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css" />
+  </head>
+  <body>
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <div class="container-fluid">
+      
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        
+        
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">Puestos electivos</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" aria-current="page" href=""> Ciudadanos </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href=""> Partidos </a>
+
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="">Candidatos </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="">Elecciones </a>
+            </li>
+         
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+
+<main>
+
+  <section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="text-white">Ciudadanos</h1>
+        <a href="" class="btn btn-primary my-2">Crear nuevo Ciudadano</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+    <div class="row">
+      
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Cedula:401-5556-7757-1</h5>
+              <h5 class="card-text">Nombre:Juan</h5>
+               <h5 class="card-text">Apellido: Fernandez </h5>
+               <h5 class="card-text">Email: FernandezJu@gmail.com </h5>
+               <a
+                href=""
+                class="btn btn-primary"
+              >edit</a>
+
+                <form id="form-delete" class="form-inline" action="" method="post">
+                <input type="hidden" name="puestosId" value="" />
+                <button type="submit" id="delete-puestos" class="btn btn-danger">Eliminar</button>
+
+              </form>
+       </div>
+            </div>
+          </div>
+        </div>
+
+              
+      
+    </div>
+
+</main>
+
+    </div>
+
+        <script src="/assets/js/bootstrap/bootstrap.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+
+
+  </body>
+</html>

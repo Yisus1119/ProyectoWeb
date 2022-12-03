@@ -17,11 +17,6 @@ const CiudadanosModel = require("./model/Ciudadanos");
 app.use(express.static(path.join(__dirname, "public")));
 
 
-
-
-
-
-
 //default middleware
 app.get('/', (req, res) => {
     res.send('Corriendo express!')
