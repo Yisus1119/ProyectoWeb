@@ -30,12 +30,24 @@ const errorController = require("./controller/errorController");
 //routes call
 const clientRoutes = require("./routes/client");
 
+const loginRoutes = require("./routes/login");
+const puestosRoutes = require("./routes/puestos");
+const candidatosRoutes = require("./routes/candidatos");
+const partidosRoutes = require("./routes/partidos");
+const ciudadanosRoutes = require("./routes/ciudadanos");
 
 //satic path
 app.use(express.static(path.join(__dirname, "public")));
 
 //Routes
 app.use(clientRoutes);
+app.use(loginRoutes);
+app.use(puestosRoutes);
+app.use(candidatosRoutes);
+app.use(partidosRoutes);
+app.use(ciudadanosRoutes);
+
+/*
 /*
 app.get('/', (req, res) => {
     res.send('Hello World!')

@@ -4,7 +4,7 @@ const mysql = require("mysql2");
 const conexion = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "toor",
+    password: "",
 });
 
 conexion.query(
@@ -17,7 +17,7 @@ conexion.query(
 
 conexion.end();
 
-const sequelize = new Sequelize("Votacion", "root", "toor", { dialect: "mysql", host: "localhost", port: 3306 });
+const sequelize = new Sequelize("Votacion", "root", "", { dialect: "mysql", host: "localhost", port: 3306 });
 
 
 module.exports = sequelize;
