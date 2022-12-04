@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 10em;
+}
+
+.tituloApp{
+    text-align: center;
+}
+
+.card{
+    margin-left: 1em;
+}
+
+
+

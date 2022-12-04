@@ -1,10 +1,12 @@
 const { CHAR } = require("sequelize");
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
+const { DataTypes } = require("sequelize");
 
-const Ciudadanos = sequelize.define("Ciudadanos", {
-    DocumentoIdentidad: {
-        type: Sequelize.CHAR(13),
+const Usuarios = sequelize.define("Usuarios", {
+    Id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
         allowNull: false,
         primaryKey: true,
     },
@@ -21,6 +23,14 @@ const Ciudadanos = sequelize.define("Ciudadanos", {
         type: Sequelize.STRING,
         allowNull: false,
     },
+    NombreUsuario: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    Passwd: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
     Estado: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
@@ -29,4 +39,4 @@ const Ciudadanos = sequelize.define("Ciudadanos", {
 
 });
 
-module.exports = Ciudadanos;
+module.exports = Usuarios;
