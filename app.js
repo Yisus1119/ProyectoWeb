@@ -29,6 +29,7 @@ const errorController = require("./controller/errorController");
 
 //routes call
 const clientRoutes = require("./routes/client");
+const puestoRoutes = require("./routes/puestos");
 
 
 //satic path
@@ -36,11 +37,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //Routes
 app.use(clientRoutes);
-/*
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
-*/
+app.use(puestoRoutes)
+
 
 
 // not found 404 route
