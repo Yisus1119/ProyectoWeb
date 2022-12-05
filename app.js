@@ -30,18 +30,24 @@ const errorController = require("./controller/errorController");
 //routes call
 const clientRoutes = require("./routes/client");
 const puestoRoutes = require("./routes/puestos");
-
+const loginRoutes = require("./routes/login");
+const candidatosRoutes = require("./routes/candidatos");
+const partidosRoutes = require("./routes/partidos");
+const ciudadanosRoutes = require("./routes/ciudadanos");
 
 //satic path
 app.use(express.static(path.join(__dirname, "public")));
 
 //Routes
 app.use(clientRoutes);
+app.use(loginRoutes);
 app.use(puestoRoutes)
+app.use(candidatosRoutes);
+app.use(partidosRoutes);
+app.use(ciudadanosRoutes);
 
 
 
-// not found 404 route
 app.use(errorController.Get404);
 
 
