@@ -1,13 +1,19 @@
-const candidatoModel = require("../model/Candidatos");
+const Candidatos = require("../model/Candidatos");
 
 exports.GetCandidatosList = (req, res, next) => {
 
-    candidatoModel.findAll().then(result => {
+    Candidatos.findAll().then(result => {
 
-        const candidatoList = result.map((result) => result.dataValue)
+       const candidatos = result.map((result) => result.dataValue);
 
-        res.render("admin/candidatoAdmin/candidato-list", { pageTitle: "Candidatos", titulo: "Lista de candidatos", homeActive: true });
-    }).catch(err => {
+        res.render("admin/candidatoAdmin/candidato-list", { 
+        pageTitle: "Candidatos", 
+        titulo: "Lista de candidatos", 
+        homeActive: true,
+        candidatos: candidatos,
+    });
+    })
+    .catch(err => {
         console.log(err)
     });
 
@@ -15,7 +21,11 @@ exports.GetCandidatosList = (req, res, next) => {
 
 //para llamar el formulario
 exports.GetCandidatoForm = (req, res, next) => {
-    res.render("admin/candidatoAdmin/save-candidato", { pageTitle: "Crear Candidatos", titulo: "Crea nuevos candidatos", homeActive: true });
+    res.render("admin/candidatoAdmin/save-candidato", { 
+        pageTitle: "Crear Candidatos", 
+        titulo: "Crea nuevos candidatos", 
+        homeActive: true,
+    });
 }
 
 //create
@@ -27,7 +37,7 @@ exports.PostCreateCandidatos = (req, res, next) => {
     const foto = req.body.FotoPerfil;
     const estado = req.body.Estado;
 
-    candidatoModel.create({ Nombre: nombre, Apellido: apellido, PartidoPerteneciente: partido, Puesto: puesto, FotoPerfil: foto, Estado: estado }).then(
+    Candidatos.create({ Nombre: nombre, Apellido: apellido, PartidoPerteneciente: partido, Puesto: puesto, FotoPerfil: foto, Estado: estado }).then(
         result => {
             res.redirect("admin/candidatoAdmin/candidato-list")
         }
@@ -46,7 +56,7 @@ exports.GetEditCandidatos = (req, res, next) => {
         return res.redirect("admin/candidatoAdmin/candidato-list");
     }
 
-    candidatoModel.findOne({ where: { Id: idCandidatos } }).then(result => {
+    Candidatos.findOne({ where: { Id: idCandidatos } }).then(result => {
         const candidato = result.dataValues
 
         res.render("admin/candidatoAdmin/candidato-list", { pageTitle: "Editar Candidatos", titulo: "Lista de candidatos", homeActive: true });
@@ -68,7 +78,7 @@ exports.PostEditCandidatos = (req, res, next) => {
     const estado = req.body.Estado;
     const idCandidatos = req.body.idCandidatos;
 
-    candidatoModel.update({ Nombre: nombre, Apellido: apellido, PartidoPerteneciente: partido, Puesto: puesto, FotoPerfil: foto, Estado: estado },
+    Candidatos.update({ Nombre: nombre, Apellido: apellido, PartidoPerteneciente: partido, Puesto: puesto, FotoPerfil: foto, Estado: estado },
         { where: { idCandidatos: idCandidatos } }).then((result) => {
             return res.redirect("admin/candidatoAdmin/candidato-list")
         }).catch(err => {
@@ -80,7 +90,7 @@ exports.PostEditCandidatos = (req, res, next) => {
 exports.PostDeleteCandidatos = (req, res, next) => {
     const idCandidatos = req.body.idCandidatos;
 
-    candidatoModel.destroy({ where: { idCandidatos: idCandidatos } }).then((result) => {
+    Candidatos.destroy({ where: { idCandidatos: idCandidatos } }).then((result) => {
         res.redirect("admin/candidatoAdmin/candidato-list")
     }).catch(err => {
         console.log(err)

@@ -15,7 +15,7 @@
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
       <h1>Puestos</h1>
-        <a href="" class="btn btn-primary my-2">Crear nuevo Puestoo</a>
+        <a href="/create-puestos" class="btn btn-primary my-2">Crear nuevo Puesto</a>
       </p>
     </div>
   </div>
@@ -23,25 +23,30 @@
 
     <div class="row">
       
+       {{#each puestos as |puesto|}}
+
         <div class="col-md-4">
           <div class="card">
              <img src="" class="card-img-top" alt="title" />
             <div class="card-body">
-              <h5 class="card-title">Nombre: Presidente</h5>
-               <h5 class="card-text">Descripcion: Es el jefe bro</h5>
+              <h5 class="card-title">Nombre: {{puesto.Nombre}}</h5>
+               <h5 class="card-text">Descripcion: {{puesto.Descripcion}}</h5>
+                 <h5 class="card-text">Descripcion: {{puesto.Estado}}</h5>
 
               <a
-                href=""
+                href="/edit-puestoss/{{puesto.id}}?edit=true"
                 class="btn btn-primary"
               >edit</a>
 
-                <form id="form-delete" class="form-inline" action="" method="post">
-                <input type="hidden" name="puestosId" value="" />
+                <form id="form-inline" class="form-inline" action="/delete-puestos" method="post">
+                <input type="hidden" name="puestosId" value="{{puesto.Id}}" />
                 <button type="submit" id="delete-puestos" class="btn btn-danger">Eliminar</button>
 
               </form>
        </div>
             </div>
+
+             {{/each}}
           </div>
         </div>
 

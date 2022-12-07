@@ -14,10 +14,16 @@ const PartidosModel = require("./model/Partidos");
 const UsuariosModel = require("./model/Usuarios");
 const CiudadanosModel = require("./model/Ciudadanos");
 
+//helper
+const compareHelpers = require('./util/helpers/hbs/compare')
+
 app.engine("hbs", expressHbs.engine({ //configurando layout principal
     layoutsDir: "views/layout/",
     defaultLayout: "main-layout",
     extname: "hbs",
+    helpers: {
+        equalValue: compareHelpers.EqualValue,
+      },
 }));
 
 app.set("view engine", "hbs");
@@ -30,6 +36,7 @@ const errorController = require("./controller/errorController");
 //routes call
 const clientRoutes = require("./routes/client");
 const puestoRoutes = require("./routes/puestos");
+const puestoClientRoutes = require("./routes/puestos");
 const loginRoutes = require("./routes/login");
 const candidatosRoutes = require("./routes/candidatos");
 const partidosRoutes = require("./routes/partidos");
@@ -42,6 +49,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(clientRoutes);
 app.use(loginRoutes);
 app.use(puestoRoutes)
+app.use(puestoClientRoutes)
 app.use(candidatosRoutes);
 app.use(partidosRoutes);
 app.use(ciudadanosRoutes);

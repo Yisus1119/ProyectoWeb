@@ -1,23 +1,113 @@
+const Puestos = require("../model/Puesto");
+
 exports.GetPuestosList = (req, res, next) => {
-    res.render("admin/puestoAdmin/puesto-list", { pageTitle: "Puestos", titulo: "Lista de Puestos", homeActive: true });
-}
+    Puestos.findAll()
+   .then((result) => {
 
-exports.getPresidenteList = (req, res, next) => {
-    res.render("client/PresidentePositions", { pageTitle: "Selección presidencial", titulo: "Candidatos presidenciales", homeActive: true });
-}
-
-exports.getViceList = (req, res, next) => {
-    res.render("client/VicePositions", { pageTitle: "Selección Vicepresidencial", titulo: "Candidatos Vicepresidenciales", homeActive: true });
-}
-
+    const puestos = result.map((result) => result.dataValues);  
+         
+     res.render("admin/puestoAdmin/puesto-list", {
+       pageTitle: "Puestos",
+       titulo: "Lista de puestos", 
+       puestosActive: true,
+       puestos: puestos,
+     });
+   })
+   .catch((err) => {
+     console.log(err);
+   });
+};
+  
 exports.GetCreatePuestos = (req, res, next) => {
-    res.render("admin/puestoAdmin/save-puesto", { pageTitle: "Crear Puestos", titulo: "Crea un nuevo puesto", homeActive: true });
+   res.render("admin/puestoAdmin/save-puesto", 
+   {pageTitle: "Create Puestos",
+   titulo: "Crea nuevos partidoss", 
+   puestosActive: true,
+    editMode: false
+   });
+};
+  
+exports.PostCreatePuestos = (req, res, next) => {
+   const puestosName = req.body.Nombre;
+   const puestosDescription = req.body.Descripcion;
+   const puestosEstado = req.body.Estado;
+
+   Puestos.create({
+     Nombre:puestosName,
+     Descripcion: puestosDescription,
+     Estado: puestosEstado,
+       })
+      .then((result) => {
+        res.redirect("/puestos");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+   
+};
+  
+exports.GetEditPuestos = (req, res, next) => {
+   const edit = req.query.edit;
+   const puestoId = req.params.puestosId;
+ 
+   if (!edit) {
+     return res.redirect("/puestos");
+   }
+
+   Puestos.findOne({ where: { Id: puestoId } })
+    .then((result) => {
+      const puesto = result.dataValues;   
+
+      if (!puesto) {
+        return res.redirect("/puestos");
+      }
+
+      res.render("admin/puestoAdmin/save-puesto", {
+        pageTitle: "Edit puestos",
+        puestosActive: true,
+        editMode: edit,
+        puesto: puesto,
+  });
+
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+   
+
+
 }
 
-exports.getAlcaldeList = (req, res, next) => {
-    res.render("client/AlcaldePosition", { pageTitle: "Selección Alcaldía", titulo: "Candidatos a la alcaldía" });
-}
+exports.PostEditPuestos = (req, res, next) => {
+    const puestosName = req.body.Nombre;
+    const puestosDescription= req.body.Descripcion;
+    const puestosEstado = req.body.Estado;
+   const puestoId = req.body.puetosId;
+  
+   Editorials.update(
+    { Nombre: puestosName, Descripcion: puestosDescription, Estado: puestosEstado, },
+    { where: { Id:  puestoId } }
+  )
+    .then((result) => {
+      return res.redirect("/puestos");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
-exports.getDiputadoList = (req, res, next) => {
-    res.render("client/DiputadoPositions", { pageTitle: "Selección Diputado", titulo: "Candidatos a diputado" });
-}
+  
+
+exports.PostDeletePuestos = (req, res, next) => {
+  
+   const puestoId = req.body.puestosId;
+
+   Puestos.destroy({ where: { Id: puestoId } })
+    .then((result) => {
+      return res.redirect("/puestos");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+   
+};

@@ -14,23 +14,42 @@
 
   <div class="card">
     <div class="card-header bg-dark text-white">
-     Crear Puesto
+     {{#if editMode}}Edicion{{else}}Creacion{{/if}} de puestos
     </div>
     <div class="card-body">
 
-       <form method="POST" action="">
+       <form method="POST" action="{{#if editMode}}/edit-puestos{{else}}/create-puestos{{/if}}">
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" name="Nombre" value="" />
+          <input type="text" class="form-control" id="nombre" name="Nombre" value="{{#if editMode}}{{puesto.Nombre}}{{/if}}"/>
         </div>
 
         <div class="mb-3">
-          <label for="description" class="form-label">Descripcion:</label>
-          <input type="text" class="form-control" id="description" name="Description" value="" />
-        </div>        
+          <label for="descripcion" class="form-label">Descripcion:</label>
+          <input type="text" class="form-control" id="descripcion" name="Descripcion" value="{{#if editMode}}{{puesto.Descripcion}}{{/if}}" />
+        </div>    
 
-         <button type="submit" class="btn btn-primary">Add</button>
-          <a href="" type="button" class="btn btn-primary">Back</a>
+                    <div class="mb-3">
+              <label for="estado" class="form-label">Estado: </label>
+              <select class="form-select" id="estado" name="Estado">
+                <option {{#if editMode}}{{else}}selected{{/if}}>Seleccione una opcion</option>
+
+                <option value="Activo">Activo</option>
+
+                <option value="Inactivo">Inactivo</option>
+
+              </select>
+            </div>    
+
+            
+          {{#if editMode}}
+
+          <input type="hidden" name="puestoId" value="{{puesto.Id}}">
+          
+          {{/if}}
+
+         <button type="submit" class="btn btn-primary">{{#if editMode}}Edit{{else}}Add{{/if}}</button>
+          <a href="/puestos" type="button" class="btn btn-primary">Back</a>
          </form>  
     </div>
   </div>
