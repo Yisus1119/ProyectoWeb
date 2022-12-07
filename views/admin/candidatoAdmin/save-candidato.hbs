@@ -1,97 +1,95 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Puestos</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css" />
-  </head>
-  <body>
 
-    <div class="container">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puestos</title>
+  <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css" />
+</head>
 
-<main>
+<body>
 
-  <div class="card">
-    <div class="card-header bg-dark text-white">
-     Crear Candidato
-    </div>
-    <div class="card-body">
+  <div class="container">
 
-       <form method="POST" action="">
+    <main>
 
-
-        <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" name="Nombre" value="" />
+      <div class="card">
+        <div class="card-header bg-dark text-white">
+          Crear Candidato
         </div>
+        <div class="card-body">
 
-        <div class="mb-3">
-          <label for="apellido" class="form-label">Apellido:</label>
-          <input type="text" class="form-control" id="apellido" name="Apellido" value="" />
-        </div>     
+          <form method="POST" action="">
 
-        <div class="mb-3">
-          <label for="fotoPerfil" class="form-label">Foto:</label>
-          <input type="text" class="form-control" id="fotoPerfil" name="FotoPerfil" value="" />
-        </div>  
 
-        <div class="mb-3">
-            <label for="partidoPerteneciente" class="form-label">Partido: </label>
-            <select class="form-select" id="partidoPerteneciente" name="PartidoPerteneciente">
-              <option selected>Seleccione una opcion</option>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre:</label>
+              <input type="text" class="form-control" id="nombre" name="Nombre" required>
+            </div>
 
-                  <option  value="PLD">PLD</option>
-                  
-                  <option value="PRM">PRM</option>               
-                        
-            </select>
+            <div class="mb-3">
+              <label for="apellido" class="form-label">Apellido:</label>
+              <input type="text" class="form-control" id="apellido" name="Apellido" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="fotoPerfil" class="form-label">Foto:</label>
+              <input type="text" class="form-control" id="fotoPerfil" name="FotoPerfil" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="partidoPerteneciente" class="form-label">Partido: </label>
+              <select class="form-select" id="partidoPerteneciente" name="PartidoPerteneciente" required>
+                <option selected>Seleccione una opcion</option>
+
+                <option value="PLD">PLD</option>
+
+                <option value="PRM">PRM</option>
+
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="puesto" class="form-label">Puesto: </label>
+              <select class="form-select" id="puesto" name="Puesto">
+                <option selected>Seleccione una opcion</option>
+
+                <option value="Presidente">Presidente</option>
+
+                <option value="Alcalde">Alcalde</option>
+
+
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="estado" class="form-label">Estado: </label>
+              <select class="form-select" id="estado" name="Estado">
+                <option selected>Seleccione una opcion</option>
+
+                <option value="Activo">Activo</option>
+
+                <option value="Inactivo">Inactivo</option>
+
+
+
+
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add</button>
+            <a href="" type="button" class="btn btn-primary">Back</a>
+          </form>
         </div>
+      </div>
 
-         <div class="mb-3">
-            <label for="puesto" class="form-label">Puesto: </label>
-            <select class="form-select" id="puesto" name="Puesto">
-              <option selected>Seleccione una opcion</option>
+    </main>
 
-                  <option  value="Presidente">Presidente</option>
-                  
-                  <option value="Alcalde">Alcalde</option>
-                      
-              
-            </select>
-        </div>
-
-                <div class="mb-3">
-            <label for="estado" class="form-label">Estado: </label>
-            <select class="form-select" id="estado" name="Estado">
-              <option selected>Seleccione una opcion</option>
-
-                  <option  value="Activo">Activo</option>
-                  
-                  <option value="Inactivo">Inactivo</option>
-                 
-                 
-           
-              
-            </select>
-        </div>
-
-         <button type="submit" class="btn btn-primary">Add</button>
-          <a href="" type="button" class="btn btn-primary">Back</a>
-         </form>  
-    </div>
   </div>
 
-</main>
-
-    </div>
-
-        <script src="/assets/js/bootstrap/bootstrap.js"></script>
-    <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
 
 
-  </body>
+</body>
+
 </html>
