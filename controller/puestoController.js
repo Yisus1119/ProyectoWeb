@@ -63,7 +63,7 @@ exports.PostCreatePuestos = (req, res, next) => {
     const estado = req.body.Estado;
 
     Puestos.create({ Nombre: name, Descripcion: description, Estado: estado }).then(result => {
-        return res.redirect("/");
+        res.redirect("/puestos");
     }).catch(err => {
         console.log("Error: " + err)
     });

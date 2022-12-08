@@ -30,6 +30,8 @@ app.set("view engine", "hbs");
 app.set("views", "views");
 
 
+
+
 //error controller call
 const errorController = require("./controller/errorController");
 
@@ -40,6 +42,8 @@ const loginRoutes = require("./routes/login");
 const candidatosRoutes = require("./routes/candidatos");
 const partidosRoutes = require("./routes/partidos");
 const ciudadanosRoutes = require("./routes/ciudadanos");
+
+app.use(express.urlencoded({ extended: false })); //Interactuar con los datos de los formularios mediante metodos HTTP
 
 //satic path
 app.use(express.static(path.join(__dirname, "public")));
