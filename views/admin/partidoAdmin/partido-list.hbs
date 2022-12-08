@@ -1,64 +1,45 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Puestos</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css" />
-  </head>
-  <body>
-
-    <div class="container">
-
 <main>
-
-  <section class="py-5 text-center container">
+<section class="py-5 text-center container">
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
-      <h1>Partidos</h1>
-        <a href="" class="btn btn-primary my-2">Crear nuevo Partido</a>
+      <h1 class="fw-light">Puestos</h1>
+      <p>
+        <a href="/partidos-form" class="btn btn-primary">Crear nuevo Partido</a>
       </p>
     </div>
   </div>
 </section>
 
-    <div class="row">
-      
-        <div class="col-md-4">
-          <div class="card">
-             <img src="" class="card-img-top" alt="title" />
-            <div class="card-body">
-              <h5 class="card-title"> Nombre: PLD</h5>
-               <h5 class="card-text">Descripcion: Es un un buen partido creo! </h5>
-               <a
-                href=""
-                class="btn btn-primary"
-              >edit</a>
+<div>
 
-                <form id="form-delete" class="form-inline" action="" method="post">
-                <input type="hidden" name="puestosId" value="" />
-                <button type="submit" id="delete-puestos" class="btn btn-danger">Eliminar</button>
+
+    <div class="row">
+
+        {{#each partidos as |partido|}}
+
+          <div  class="col-md-3 mt-1">
+          <div class="card">
+             <img src="{{partido.LogoPartido}}" class="card-img-top" alt={{partido.Nombre}} />
+            <div class="card-body">
+              <h5 class="card-title"> Titulo: {{partido.Nombre}}</h5>
+              <h6 class="card-subtitle"> Descripcion: {{partido.Descripcion}}</h6>
+              <h6 class="card-subtitle">Estado: {{partido.Estado}}</h6>
+              <a
+                href="/edit-partidos/{{partido.Id}}?edit=true"
+                class="btn btn-warning"
+              >Editar</a>
+
+              <form id="form-inline" action="/delete-partidos" method="post">
+                <input type="hidden" name="partidosId" value="{{partido.Id}}" />
+                <button type="submit" class="btn btn-danger">Eliminar</button>
 
               </form>
-       </div>
             </div>
           </div>
-        </div>
+          </div>
 
-              
-      
+        {{/each}}
+
     </div>
-
+  </div>
 </main>
-
-    </div>
-
-        <script src="/assets/js/bootstrap/bootstrap.js"></script>
-    <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
-
-
-  </body>
-</html>

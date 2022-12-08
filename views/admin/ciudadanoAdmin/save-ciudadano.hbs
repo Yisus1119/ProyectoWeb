@@ -14,30 +14,34 @@
 
   <div class="card">
     <div class="card-header bg-dark text-white">
-     Crear Ciudadano
+      {{#if editMode}}Edicion{{else}}Creacion{{/if}} de ciudadanos
     </div>
     <div class="card-body">
 
-       <form method="POST" action="">
+       <form method="POST" action="{{#if editMode}}/edit-ciudadanos{{else}}/create-ciudadanos{{/if}}">
 
         <div class="mb-3">
           <label for="documentoIdentidad" class="form-label">Cedula:</label>
-          <input type="text" class="form-control" id="documentoIdentidad" name="DocumentoIdentidad" value="" />
+          <input type="text" class="form-control" id="documentoIdentidad" name="DocumentoIdentidad" 
+          value="{{#if editMode}}{{ciudadano.DocumentoIdentidad}}{{/if}}" />
         </div>
 
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" name="Nombre" value="" />
+          <input type="text" class="form-control" id="nombre" name="Nombre" 
+          value="{{#if editMode}}{{ciudadano.Nombre}}{{/if}}" />
         </div>
 
         <div class="mb-3">
           <label for="apellido" class="form-label">Apellido:</label>
-          <input type="text" class="form-control" id="apellido" name="Apellido" value="" />
+          <input type="text" class="form-control" id="apellido" name="Apellido"
+           value="{{#if editMode}}{{ciudadano.Apellido}}{{/if}}" />
         </div>     
 
         <div class="mb-3">
           <label for="email" class="form-label">Email:</label>
-          <input type="text" class="form-control" id="email" name="Email" value="" />
+          <input type="text" class="form-control" id="email" name="Email" 
+          value="{{#if editMode}}{{ciudadano.Email}}{{/if}}" />
         </div>  
 
         <div class="mb-3">
@@ -54,9 +58,13 @@
               
             </select>
         </div>
+       {{#if editMode}}
 
+            <input type="hidden" name="ciudadanoId" value="{{ciudadano.Id}}">
+
+            {{/if}}
          <button type="submit" class="btn btn-primary">Add</button>
-          <a href="" type="button" class="btn btn-primary">Back</a>
+          <a href="/ciudadanos" type="button" class="btn btn-primary">Back</a>
          </form>  
     </div>
   </div>

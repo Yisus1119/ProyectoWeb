@@ -9,7 +9,7 @@ exports.GetPuestosList = (req, res, next) => {
             res.render("admin/puestoAdmin/puesto-list", {
                 pageTitle: "Puestos",
                 titulo: "Lista de puestos",
-                puestosActive: true,
+                homeActive: true,
                 puestos: puestos,
             });
         })
@@ -53,7 +53,7 @@ exports.PostCreatePuestos = (req, res, next) => {
 */
 
 exports.GetPuestosForm = (req, res, next) => {
-    res.render("admin/puestoAdmin/save-puesto", { pageTitle: "Formulario de puestos", homeActive: true });
+    res.render("admin/puestoAdmin/save-puesto", { pageTitle: "Formulario de puestos", homeActive: true, editMode: false });
 }
 
 
@@ -88,7 +88,7 @@ exports.GetEditPuestos = (req, res, next) => {
 
             res.render("admin/puestoAdmin/save-puesto", {
                 pageTitle: "Edit puestos",
-                puestosActive: true,
+                homeActive: true,
                 editMode: edit,
                 puesto: puesto,
             });
@@ -106,9 +106,9 @@ exports.PostEditPuestos = (req, res, next) => {
     const puestosName = req.body.Nombre;
     const puestosDescription = req.body.Descripcion;
     const puestosEstado = req.body.Estado;
-    const puestoId = req.body.puetosId;
+    const puestoId = req.body.puestoId;
 
-    Editorials.update(
+    Puestos.update(
         { Nombre: puestosName, Descripcion: puestosDescription, Estado: puestosEstado, },
         { where: { Id: puestoId } }
     )

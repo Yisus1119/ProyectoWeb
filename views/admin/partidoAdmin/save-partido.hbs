@@ -14,24 +14,27 @@
 
   <div class="card">
     <div class="card-header bg-dark text-white">
-     Crear Partido
+      {{#if editMode}}Edicion{{else}}Creacion{{/if}} de partidos
     </div>
     <div class="card-body">
 
-       <form method="POST" action="">
+       <form method="POST" action="{{#if editMode}}/edit-partidos{{else}}/create-partidos{{/if}}">
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" name="Nombre" value="" />
+          <input type="text" class="form-control" id="nombre" name="Nombre"
+           value="{{#if editMode}}{{partido.Nombre}}{{/if}}" />
         </div>
 
         <div class="mb-3">
-          <label for="description" class="form-label">Descripcion:</label>
-          <input type="text" class="form-control" id="description" name="Description" value="" />
+          <label for="descripcion" class="form-label">Descripcion:</label>
+          <input type="text" class="form-control" id="descricion" name="Descripcion" 
+          value="{{#if editMode}}{{partido.Descripcion}}{{/if}}" />
         </div>     
 
         <div class="mb-3">
-          <label for="L-logoPartido" class="form-label">Logo:</label>
-          <input type="text" class="form-control" id="logoPartido" name="LogoPartido" value="" />
+          <label for="logoPartido" class="form-label">Logo:</label>
+          <input type="text" class="form-control" id="logoPartido" name="LogoPartido" 
+          value="{{#if editMode}}{{partido.LogoPartido}}{{/if}}" />
         </div>  
 
         <div class="mb-3">
@@ -43,14 +46,19 @@
                   
                   <option value="Inactivo">Inactivo</option>
                  
-                 
-           
-              
+                                      
             </select>
         </div>
 
-         <button type="submit" class="btn btn-primary">Add</button>
-          <a href="" type="button" class="btn btn-primary">Back</a>
+          {{#if editMode}}
+
+            <input type="hidden" name="partidoId" value="{{partido.Id}}">
+
+            {{/if}}
+
+
+         <button type="submit" class="btn btn-primary">{{#if editMode}}Editar{{else}}Crear{{/if}}</button>
+          <a href="/partidos" type="button" class="btn btn-primary">Back</a>
          </form>  
     </div>
   </div>
