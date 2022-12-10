@@ -1,78 +1,79 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Puestos</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css" />
-  </head>
-  <body>
 
-    <div class="container">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puestos</title>
+  <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css" />
+</head>
 
-<main>
+<body>
 
-  <div class="card">
-    <div class="card-header bg-dark text-white">
-      {{#if editMode}}Edicion{{else}}Creacion{{/if}} de partidos
-    </div>
-    <div class="card-body">
+  <div class="container">
 
-       <form method="POST" action="{{#if editMode}}/edit-partidos{{else}}/create-partidos{{/if}}">
-        <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre:</label>
-          <input type="text" class="form-control" id="nombre" name="Nombre"
-           value="{{#if editMode}}{{partido.Nombre}}{{/if}}" />
+    <main>
+
+      <div class="card">
+        <div class="card-header bg-dark text-white">
+          {{#if editMode}}Edicion{{else}}Creacion{{/if}} de partidos
         </div>
+        <div class="card-body">
 
-        <div class="mb-3">
-          <label for="descripcion" class="form-label">Descripcion:</label>
-          <input type="text" class="form-control" id="descricion" name="Descripcion" 
-          value="{{#if editMode}}{{partido.Descripcion}}{{/if}}" />
-        </div>     
+          <form method="POST" action="{{#if editMode}}/edit-partidos{{else}}/create-partidos{{/if}}">
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre:</label>
+              <input type="text" class="form-control" id="nombre" name="Nombre"
+                value="{{#if editMode}}{{partido.Nombre}}{{/if}}" />
+            </div>
 
-        <div class="mb-3">
-          <label for="logoPartido" class="form-label">Logo:</label>
-          <input type="text" class="form-control" id="logoPartido" name="LogoPartido" 
-          value="{{#if editMode}}{{partido.LogoPartido}}{{/if}}" />
-        </div>  
+            <div class="mb-3">
+              <label for="descripcion" class="form-label">Descripcion:</label>
+              <input type="text" class="form-control" id="descricion" name="Descripcion"
+                value="{{#if editMode}}{{partido.Descripcion}}{{/if}}" />
+            </div>
 
-        <div class="mb-3">
-            <label for="estado" class="form-label">Estado: </label>
-            <select class="form-select" id="estado" name="Estado">
-              <option selected>Seleccione una opcion</option>
+            <div class="mb-3">
+              <label for="logoPartido" class="form-label">Logo:</label>
+              <input type="text" class="form-control" id="logoPartido" name="LogoPartido"
+                value="{{#if editMode}}{{partido.LogoPartido}}{{/if}}" />
+            </div>
 
-                  <option selected value="Activo">Activo</option>
-                  
-                  <option value="Inactivo">Inactivo</option>
-                 
-                                      
-            </select>
-        </div>
+            <div class="mb-3">
+              <label for="estado" class="form-label">Estado: </label>
+              <select class="form-select" id="estado" name="Estado">
+                <option selected>Seleccione una opcion</option>
 
-          {{#if editMode}}
+                <option selected value="1">Activo</option>
+
+                <option value="2">Inactivo</option>
+
+
+              </select>
+            </div>
+
+            {{#if editMode}}
 
             <input type="hidden" name="partidoId" value="{{partido.Id}}">
 
             {{/if}}
 
 
-         <button type="submit" class="btn btn-primary">{{#if editMode}}Editar{{else}}Crear{{/if}}</button>
-          <a href="/partidos" type="button" class="btn btn-primary">Back</a>
-         </form>  
-    </div>
+            <button type="submit" class="btn btn-primary">{{#if editMode}}Editar{{else}}Crear{{/if}}</button>
+            <a href="/partidos" type="button" class="btn btn-primary">Back</a>
+          </form>
+        </div>
+      </div>
+
+    </main>
+
   </div>
 
-</main>
-
-    </div>
-
-        <script src="/assets/js/bootstrap/bootstrap.js"></script>
-    <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
+  <script src="/assets/js/bootstrap/bootstrap.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
-  </body>
+</body>
+
 </html>

@@ -78,6 +78,11 @@
               </select>
             </div>
 
+            {{#if editMode}}
+            <input type="hidden" name="candidatosId" value="{{book.idLibro}}">
+            {{/if}}
+
+
             <button type="submit" class="btn btn-primary">Add</button>
             <a href="/candidatos" type="button" class="btn btn-primary">Back</a>
           </form>
