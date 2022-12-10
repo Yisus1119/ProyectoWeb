@@ -47,7 +47,7 @@ exports.GetEditCiudadanos = (req, res, next) => {
         return res.redirect("/ciudadanos");
     }
 
-    Ciudadanos.findOne({ where: { Id:ciudadanoId } })
+    Ciudadanos.findOne({ where: { DocumentoIdentidad:ciudadanoId } })
         .then((result) => {
             const ciudadano= result.dataValues;
 
@@ -81,7 +81,7 @@ exports.PostEditCiudadanos = (req, res, next) => {
 
     Ciudadanos.update(
         { DocumentoIdentidad: ciudadanosIndentidad,  Nombre:ciudadanosName, Apellido: ciudadanosApellido, Email: ciudadanosEmail , Estado: ciudadanosEstado, },
-        { where: { Id: ciudadanoId } }
+        { where: { DocumentoIdentidad: ciudadanoId } }
     )
         .then((result) => {
             return res.redirect("/ciudadanos");
@@ -97,7 +97,7 @@ exports.PostDeleteCiudadanos = (req, res, next) => {
 
     const ciudadanoId = req.body.ciudadanosId;
 
-    Ciudadanos.destroy({ where: { Id: ciudadanoId } })
+    Ciudadanos.destroy({ where: { DocumentoIdentidad: ciudadanoId } })
         .then((result) => {
             return res.redirect("/ciudadanos");
         })
