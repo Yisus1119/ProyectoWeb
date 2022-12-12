@@ -20,7 +20,7 @@
       </div>
       <div class="card-body">
 
-        <form method="POST" action="{{#if editMode}}/edit-candidatos/ {{else}} /create-candidatos {{/if}}">
+        <form method="POST" action="{{#if editMode}}/edit-candidatos{{else}}/create-candidatos{{/if}}">
 
 
           <div class="mb-3">
@@ -82,7 +82,7 @@
           </div>
 
           {{#if editMode}}
-          <input type="hidden" name="candidatosId" value="{{book.idLibro}}">
+          <input type="hidden" name="candidatoId" value="{{candidato.Id}}">
           {{/if}}
 
 

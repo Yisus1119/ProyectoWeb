@@ -7,7 +7,12 @@ exports.GetCandidatosList = (req, res, next) => {
 
         const candidatosList = result.map((result) => result.dataValues) //iteramos, y mapeamos los datos para listar los datos
 
-        res.render("admin/candidatoAdmin/candidato-list", { pageTitle: "Candidatos", titulo: "Lista de candidatos", homeActive: true, candidatosList: candidatosList, admin: true });
+        res.render("admin/candidatoAdmin/candidato-list", { 
+            pageTitle: "Candidatos", 
+            titulo: "Lista de candidatos", 
+            homeActive: true, 
+            candidatosList: candidatosList, 
+            admin: true });
 
     }).catch(err => {
         console.log(err)
@@ -47,13 +52,13 @@ exports.PostCreateCandidatos = (req, res, next) => {
 //GET ID
 exports.GetEditCandidatos = (req, res, next) => {
     const edit = req.query.edit;
-    const idCandidatos = req.params.Id;
+    const idCandidatos = req.params.candidatosId;
 
     if (!edit) {
         return res.redirect("/candidatos");
     }
 
-    Candidatos.findOne({ where: { Id: idCandidatos } }).then(result => {
+    Candidatos.findOne({ where: { Id:idCandidatos } }).then(result => {
         const candidato = result.dataValues
 
 
@@ -61,7 +66,13 @@ exports.GetEditCandidatos = (req, res, next) => {
             return res.redirect("/candidatos")
         }
 
-        res.render("admin/candidatoAdmin/save-candidato", { pageTitle: "Editar Candidatos", titulo: "Lista de candidatos", editMode: edit, homeActive: true, admin: true });
+        res.render("admin/candidatoAdmin/save-candidato", { 
+            pageTitle: "Editar Candidatos", 
+            titulo: "Lista de candidatos", 
+            editMode: edit, 
+            candidato:candidato,
+            homeActive: true, 
+            admin: true });
 
     }).catch(err => {
         console.log(err)
@@ -77,10 +88,13 @@ exports.PostEditCandidatos = (req, res, next) => {
     const puesto = req.body.Puesto;
     const foto = req.body.FotoPerfil;
     const estado = req.body.Estado;
-    const idCandidatos = req.body.idCandidatos;
+    const idCandidatos = req.body.candidatoId;
 
     Candidatos.update({ Nombre: nombre, Apellido: apellido, PartidoPerteneciente: partido, Puesto: puesto, FotoPerfil: foto, Estado: estado },
-        { where: { idCandidatos: idCandidatos } }).then((result) => {
+        { where: { Id: idCandidatos } }
+        
+        )
+        .then((result) => {
             return res.redirect("/candidatos")
         }).catch(err => {
             console.log(err)
@@ -89,9 +103,9 @@ exports.PostEditCandidatos = (req, res, next) => {
 
 //delete
 exports.PostDeleteCandidatos = (req, res, next) => {
-    const idCandidatos = req.body.idCandidatos;
+    const idCandidatos = req.body.candidatosId;
 
-    Candidatos.destroy({ where: { idCandidatos: idCandidatos } }).then((result) => {
+    Candidatos.destroy({ where: { Id: idCandidatos } }).then((result) => {
         res.redirect("/candidatos")
     }).catch(err => {
         console.log(err)

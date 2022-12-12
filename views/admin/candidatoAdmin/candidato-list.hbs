@@ -24,11 +24,13 @@
         <h5 class="card-text">Puesto: {{candidato.Puesto}}</h5>
         <h5 class="card-text">Estado: {{candidato.Estado}}</h5>
       </div>
-      <a href="/edit-candidatos/{{candidato.candidatosId}}?edit=true" class="btn btn-success">Editar</a>
+      <a href="/edit-candidatos/{{candidato.Id}}?edit=true" 
+      class="btn btn-success"
+      >Editar</a>
 
       <form class="form-inline" action="/delete-candidatos" method="POST">
-        <input type="hidden" name="candidatosId" value="{{candidato.candidatosId}}" />
-        <button type="submit" href="#" class="btn btn-danger ">Eliminar</button>
+        <input type="hidden" name="candidatosId" value="{{candidato.Id}}" />
+        <button type="submit" href="delete-candidatos" class="btn btn-danger ">Eliminar</button>
       </form>
     </div>
     {{/each}}
