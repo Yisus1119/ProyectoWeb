@@ -11,6 +11,8 @@ exports.GetPuestosList = (req, res, next) => {
                 titulo: "Lista de puestos",
                 homeActive: true,
                 puestos: puestos,
+                admin: true
+
             });
         })
         .catch((err) => {
@@ -53,7 +55,7 @@ exports.PostCreatePuestos = (req, res, next) => {
 */
 
 exports.GetPuestosForm = (req, res, next) => {
-    res.render("admin/puestoAdmin/save-puesto", { pageTitle: "Formulario de puestos", homeActive: true, editMode: false });
+    res.render("admin/puestoAdmin/save-puesto", { pageTitle: "Formulario de puestos", homeActive: true, editMode: false, admin: true });
 }
 
 
@@ -91,6 +93,7 @@ exports.GetEditPuestos = (req, res, next) => {
                 homeActive: true,
                 editMode: edit,
                 puesto: puesto,
+                admin: true
             });
 
         })

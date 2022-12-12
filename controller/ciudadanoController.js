@@ -11,6 +11,7 @@ exports.GetCiudadanosList = (req, res, next) => {
                 titulo: "Lista de ciudadanos",
                 homeActive: true,
                 ciudadanos: ciudadanos,
+                admin: true
             });
         })
         .catch((err) => {
@@ -20,7 +21,7 @@ exports.GetCiudadanosList = (req, res, next) => {
 
 
 exports.GetCiudadanosForm = (req, res, next) => {
-    res.render("admin/ciudadanoAdmin/save-ciudadano", { pageTitle: "Formulario de ciudadanos", homeActive: true, editMode: false });
+    res.render("admin/ciudadanoAdmin/save-ciudadano", { pageTitle: "Formulario de ciudadanos", homeActive: true, editMode: false, admin: true });
 }
 
 
@@ -47,9 +48,9 @@ exports.GetEditCiudadanos = (req, res, next) => {
         return res.redirect("/ciudadanos");
     }
 
-    Ciudadanos.findOne({ where: { DocumentoIdentidad:ciudadanoId } })
+    Ciudadanos.findOne({ where: { DocumentoIdentidad: ciudadanoId } })
         .then((result) => {
-            const ciudadano= result.dataValues;
+            const ciudadano = result.dataValues;
 
             if (!ciudadano) {
                 return res.redirect("/ciudadanos");
@@ -60,6 +61,7 @@ exports.GetEditCiudadanos = (req, res, next) => {
                 homeActive: true,
                 editMode: edit,
                 ciudadano: ciudadano,
+                admin: true
             });
 
         })
@@ -80,7 +82,7 @@ exports.PostEditCiudadanos = (req, res, next) => {
     const ciudadanoId = req.body.ciudadanoId;
 
     Ciudadanos.update(
-        { DocumentoIdentidad: ciudadanosIndentidad,  Nombre:ciudadanosName, Apellido: ciudadanosApellido, Email: ciudadanosEmail , Estado: ciudadanosEstado, },
+        { DocumentoIdentidad: ciudadanosIndentidad, Nombre: ciudadanosName, Apellido: ciudadanosApellido, Email: ciudadanosEmail, Estado: ciudadanosEstado, },
         { where: { DocumentoIdentidad: ciudadanoId } }
     )
         .then((result) => {

@@ -13,6 +13,7 @@ const eleccionesModel = require("./model/Elecciones");
 const PartidosModel = require("./model/Partidos");
 const UsuariosModel = require("./model/Usuarios");
 const CiudadanosModel = require("./model/Ciudadanos");
+const SeleccionModel = require("./model/Seleccion");
 
 //helper
 const compareHelpers = require('./util/helpers/hbs/compare')
@@ -20,6 +21,7 @@ const compareHelpers = require('./util/helpers/hbs/compare')
 app.engine("hbs", expressHbs.engine({ //configurando layout principal
     layoutsDir: "views/layout/",
     defaultLayout: "main-layout",
+    partialsDir: path.join(__dirname, 'views/partials'),
     extname: "hbs",
     helpers: {
         equalValue: compareHelpers.EqualValue,

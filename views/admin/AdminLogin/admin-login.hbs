@@ -15,14 +15,14 @@
     </div>
     <div class="card-body">
 
-       <form method="POST" action="">
+       <form method="POST" action="/entrar">
         <div class="mb-3">
           <label for="user" class="form-label">User:</label>
           <input type="text" class="form-control" id="user" name="User" value="" />
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password:</label>
-          <input type="text" class="form-control" id="password" name="Password" value="" />
+          <input type="password" class="form-control" id="password" name="Password" value="" />
         </div>
         
 
@@ -31,7 +31,13 @@
 
          <button type="submit" class="btn btn-primary">Entrar</button>
        
-         </form>  
+      </form>  
+      {{#unless correct}}
+      <div class="alert alert-danger" role="alert">
+       Usuario o contraseña incorrectos
+      </div>
+      {{else}}
+      {{/unless}}
     </div>
   </div>
 </div>

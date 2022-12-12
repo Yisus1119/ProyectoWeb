@@ -11,6 +11,7 @@ exports.GetPartidosList = (req, res, next) => {
                 titulo: "Lista de partidos",
                 homeActive: true,
                 partidos: partidos,
+                admin: true
             });
         })
         .catch((err) => {
@@ -20,7 +21,7 @@ exports.GetPartidosList = (req, res, next) => {
 
 
 exports.GetPartidosForm = (req, res, next) => {
-    res.render("admin/partidoAdmin/save-partido", { pageTitle: "Formulario de partidos", homeActive: true, editMode: false });
+    res.render("admin/partidoAdmin/save-partido", { pageTitle: "Formulario de partidos", homeActive: true, editMode: false, admin: true });
 }
 
 
@@ -59,6 +60,7 @@ exports.GetEditPartidos = (req, res, next) => {
                 homeActive: true,
                 editMode: edit,
                 partido: partido,
+                admin: true
             });
 
         })
@@ -78,7 +80,7 @@ exports.PostEditPartidos = (req, res, next) => {
     const partidoId = req.body.partidoId;
 
     Partidos.update(
-        { Nombre: partidosName, Descripcion:partidosDescription, LogoPartido: partidoLogo, Estado: partidosEstado, },
+        { Nombre: partidosName, Descripcion: partidosDescription, LogoPartido: partidoLogo, Estado: partidosEstado, },
         { where: { Id: partidoId } }
     )
         .then((result) => {

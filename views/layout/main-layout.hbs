@@ -14,28 +14,18 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Sistema de votación automatizado</a>
-            <span class="navbar-text">
-                 <a class="nav-link active" aria-current="page" href="/login">Iniciar sesión como administrador</a>
-            </span>
-            
-        </div>
-    </nav>
+    {{> navbar adminNavbar=admin }}
 
-        <h1 class="tituloApp">{{titulo}}</h1>
+    <h1 class="tituloApp">{{titulo}}</h1>
     <div class="container">
 
-    {{{body}}}
+        {{{body}}}
 
     </div>
 
-     <script src="/assets/js/bootstrap/bootstrap.js"></script>
-    <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
+    <script src="/assets/js/bootstrap/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </body>
 

@@ -1,18 +1,20 @@
-const Candidatos = require("../model/Candidatos");
+const Usuarios = require("../model/Usuarios");
 
 
-exports.GetCandidatosList = (req, res, next) => {
+/*
+exports.GetUsuariosList = (req, res, next) => {
 
-    Candidatos.findAll().then(result => { //buscar los usuarios
+    Usuarios.findAll().then(result => { //buscar los usuarios
 
-        const candidatosList = result.map((result) => result.dataValues) //iteramos, y mapeamos los datos para listar los datos
+        const usuariosList = result.map((result) => result.dataValues) //iteramos, y mapeamos los datos para listar los datos
 
-        res.render("admin/candidatoAdmin/candidato-list", { pageTitle: "Candidatos", titulo: "Lista de candidatos", homeActive: true, candidatosList: candidatosList, admin: true });
+        res.render("admin/candidatoAdmin/candidato-list", { pageTitle: "Usuarios", titulo: "Lista de candidatos", homeActive: true, usuariosList: usuariosList, admin: true });
 
     }).catch(err => {
         console.log(err)
     });
 }
+*/
 
 //para llamar el formulario
 exports.GetCandidatoForm = (req, res, next) => {

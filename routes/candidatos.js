@@ -7,7 +7,7 @@ router.get("/candidatos", candidatoController.GetCandidatosList);
 router.get("/form-candidatos", candidatoController.GetCandidatoForm)
 router.post("/create-candidatos", candidatoController.PostCreateCandidatos)
 router.get("/edit-candidatos/:candidatosId", candidatoController.GetEditCandidatos)
-router.get("/edit-candidatos", candidatoController.PostEditCandidatos)
+router.post("/edit-candidatos", candidatoController.PostEditCandidatos)
 router.post("/delete-candidatos", candidatoController.PostDeleteCandidatos)
 
 

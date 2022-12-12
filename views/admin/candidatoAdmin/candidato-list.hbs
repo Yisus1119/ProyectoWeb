@@ -1,71 +1,37 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Puestos</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css" />
-  </head>
-  <body>
-
-   
-
 <main>
-
   <section class="py-5 text-center container">
-  <div class="row py-lg-5">
-    <div class="col-lg-6 col-md-8 mx-auto">
-      <h1>Candidatos</h1>
-        <a href="/form-candidatos" class="btn btn-primary my-2">Crear nuevo Candidato</a>
-      </p>
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light"></h1>
+        <p>
+          <a href="/form-candidatos" class="btn btn-primary my-2">Crear nuevo Candidato</a>
+        </p>
+      </div>
     </div>
+  </section>
+
+  <div class="row">
+
+    {{#each candidatosList as |candidato|}}
+
+    <div class="card" style="width: 18rem;">
+      <img src="{{candidato.FotoPerfil}}" class="card-img-top" alt="sdffsd">
+
+      <div class="card-body">
+        <h5 class="card-title">Nombre:{{candidato.Nombre}}</h5>
+        <h5 class="card-text">Apellido: {{candidato.Apellido}} </h5>
+        <h5 class="card-text">Partido: {{candidato.PartidoPerteneciente}} </h5>
+        <h5 class="card-text">Puesto: {{candidato.Puesto}}</h5>
+        <h5 class="card-text">Estado: {{candidato.Estado}}</h5>
+      </div>
+      <a href="/edit-candidatos/{{candidato.candidatosId}}?edit=true" class="btn btn-success">Editar</a>
+
+      <form class="form-inline" action="/delete-candidatos" method="POST">
+        <input type="hidden" name="candidatosId" value="{{candidato.candidatosId}}" />
+        <button type="submit" href="#" class="btn btn-danger ">Eliminar</button>
+      </form>
+    </div>
+    {{/each}}
   </div>
-</section>
-
-    <div class="row">
-      
-       {{#each candidatos as |candidato|}}
-
-        <div class="col-md-4">
-          <div class="card">
-             <img src="{{candidato.FotoPerfil}}" class="card-img-top" alt={{candidato.Nombre}} />
-            <div class="card-body">
-              <h5 class="card-title">Nombre:{{candidato.Nombre}}</h5>
-              <h5 class="card-text">Apellido: {{candidato.Apellido}} </h5>
-               <h5 class="card-text">Partido {{candidato.PartidoPerteneciente}} </h5>
-               <h5 class="card-text">Puesto: {{candidato.Puesto}}</h5>
-                <h5 class="card-text">Puesto: {{candidato.Estado}}</h5>
-
-               <a
-                href=""
-                class="btn btn-primary"
-              >edit</a>
-
-                <form id="form-delete" class="form-inline" action="/delete-candidatos" method="post">
-                <input type="hidden" name="candidatosId" value="" />
-                <button type="submit" id="delete-puestos" class="btn btn-danger">Eliminar</button>
-
-              </form>
-       </div>
-            </div>
-            {{/each}}
-          </div>
-        </div>
-
-              
-      
-    </div>
 
 </main>
-
-
-
-        <script src="/assets/js/bootstrap/bootstrap.js"></script>
-    <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
-
-
-  </body>
-</html>

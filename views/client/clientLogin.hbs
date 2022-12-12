@@ -1,30 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="d-flex justify-content-center align-self-center">
+    <div class="col-md-6">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{pageTitle}}</title>
-</head>
-<br>
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <div class="card-body">
 
-<body>
-    <form>
-        <div class="d-flex justify-content-center align-self-center">
-            <!-- use later -->
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">
-                    <h4>Ingrese su documento de identidad</h4>
-                </label>
-                <input type="text" class="form-control" id="cedula" aria-describedby="cedula" name="Cedula"
-                    minlength="13">
-                <div id="emailHelp" class="form-text">Nota: Recuerde que su documento de identidad tiene 13 digitos.
+                    <form method="POST" action="/insertar">
+
+
+                        <div class="mb-3">
+                            <label for="cedula" class="form-label">Ingrese sun cédula de identidad</label>
+                            <input type="text" class="form-control" id="cedula" name="Cedula" value="" required>
+                            <div class="form-text">Nota: Recuerde que su documento de identidad tiene 13
+                                digitos.
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">Ingresar al sistema</button>
                 </div>
-                <div class="btn"><a type="submit" href="/votar" class="btn btn-success">Ingresar</a></div>
-            </div>
-        </div>
-    </form>
-</body>
+                </form>
 
-</html>
+            </div>
+
+        </div>
+    </div>
+</div>

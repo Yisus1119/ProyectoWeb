@@ -16,80 +16,83 @@
 
       <div class="card">
         <div class="card-header bg-dark text-white">
-          Crear Candidato
-        </div>
-        <div class="card-body">
-
-          <form method="POST" action="/create-candidatos">
-
-
-            <div class="mb-3">
-              <label for="nombre" class="form-label">Nombre:</label>
-              <input type="text" class="form-control" id="nombre" name="Nombre" required>
-            </div>
-
-            <div class="mb-3">
-              <label for="apellido" class="form-label">Apellido:</label>
-              <input type="text" class="form-control" id="apellido" name="Apellido" required>
-            </div>
-
-            <div class="mb-3">
-              <label for="fotoPerfil" class="form-label">Foto:</label>
-              <input type="text" class="form-control" id="fotoPerfil" name="FotoPerfil" required>
-            </div>
-
-            <div class="mb-3">
-              <label for="partidoPerteneciente" class="form-label">Partido: </label>
-              <select class="form-select" id="partidoPerteneciente" name="PartidoPerteneciente" required>
-                <option selected>Seleccione una opcion</option>
-
-                <option value="PLD">PLD</option>
-
-                <option value="PRM">PRM</option>
-
-              </select>
-            </div>
-
-            <div class="mb-3">
-              <label for="puesto" class="form-label">Puesto: </label>
-              <select class="form-select" id="puesto" name="Puesto">
-                <option selected>Seleccione una opcion</option>
-
-                <option value="Presidente">Presidente</option>
-
-                <option value="Alcalde">Alcalde</option>
-
-
-              </select>
-            </div>
-
-            <div class="mb-3">
-              <label for="estado" class="form-label">Estado: </label>
-              <select class="form-select" id="estado" name="Estado">
-                <option selected>Seleccione una opcion</option>
-
-                <option value="Activo">Activo</option>
-
-                <option value="Inactivo">Inactivo</option>
-
-
-
-
-              </select>
-            </div>
-
-            {{#if editMode}}
-            <input type="hidden" name="candidatosId" value="{{book.idLibro}}">
-            {{/if}}
-
-
-            <button type="submit" class="btn btn-primary">Add</button>
-            <a href="/candidatos" type="button" class="btn btn-primary">Back</a>
-          </form>
-        </div>
+          {{#if editMode}} Edicion{{else}}Creacion{{/if}} de Candidatos</div>
       </div>
+      <div class="card-body">
 
-    </main>
+        <form method="POST" action="{{#if editMode}}/edit-candidatos/ {{else}} /create-candidatos {{/if}}">
+
+
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="Nombre"
+              value="{{#if editMode}}{{candidato.Nombre}}{{/if}}" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido:</label>
+            <input type="text" class="form-control" id="apellido" name="Apellido"
+              value="{{#if editMode}}{{candidato.Apellido}}{{/if}}" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="fotoPerfil" class="form-label">Foto:</label>
+            <input type="text" class="form-control" id="fotoPerfil" name="FotoPerfil"
+              value="{{#if editMode}}{{candidato.FotoPerfil}}{{/if}}" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="partidoPerteneciente" class="form-label">Partido: </label>
+            <select class="form-select" id="partidoPerteneciente" name="PartidoPerteneciente" required>
+              <option selected>{{#if editMode}}{{candidato.PartidoPerteneciente}}{{/if}}</option>
+
+              <option value="PLD">PLD</option>
+
+              <option value="PRM">PRM</option>
+
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="puesto" class="form-label">Puesto: </label>
+            <select class="form-select" id="puesto" name="Puesto">
+              <option selected>{{#if editMode}}{{candidato.Puesto}}{{/if}}</option>
+              <option value="Presidente">Presidente</option>
+              <option value="Vicepresidente">Vicepresidente</option>
+              <option value="Alcalde">Alcalde</option>
+              <option value="Diputado">Diputado</option>
+
+
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="estado" class="form-label">Estado: </label>
+            <select class="form-select" id="estado" name="Estado">
+              <option selected>{{#if editMode}}{{candidato.Estado}}{{/if}}</option>
+
+              <option value="Activo">Activo</option>
+
+              <option value="Inactivo">Inactivo</option>
+
+
+
+
+            </select>
+          </div>
+
+          {{#if editMode}}
+          <input type="hidden" name="candidatosId" value="{{book.idLibro}}">
+          {{/if}}
+
+
+          <button type="submit" class="btn btn-primary">{{#if editMode}}Editar{{else}}Crear{{/if}}</button>
+          <a href="/candidatos" type="button" class="btn btn-primary">Back</a>
+        </form>
+      </div>
+  </div>
+
+  </main>
 
   </div>
 

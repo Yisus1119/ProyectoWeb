@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+    {{#if this.adminNavbar}}
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/inicio">Sistema administracion</a>
+            <a class="navbar-brand" href="/candidatos">Candidatos</a>
+            <a class="navbar-brand" href="/ciudadanos">Ciudadanos</a>
+            <a class="navbar-brand" href="/partidos">Partido</a>
+            <a class="navbar-brand" href="/puestos">Puesto</a>
+            <span class="navbar-text">
+                <a class="nav-link active" aria-current="page" href="/login">Cerrar sesión</a>
+            </span>
+        </div>
+    {{else}}
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Sistema de votación automatizado</a>
+            <span class="navbar-text">
+                <a class="nav-link active" aria-current="page" href="/login">Iniciar sesión como administrador</a>
+            </span>
+        </div>
+    {{/if}}
+
+
+
+</nav>
