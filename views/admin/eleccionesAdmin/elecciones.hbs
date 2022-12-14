@@ -1,0 +1,72 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puestos</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap/bootstrap.min.css" />
+</head>
+
+<body>
+
+    <div class="container">
+
+        <main>
+
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    {{#if editMode}}Edicion{{else}}Creacion{{/if}} de elecciones
+                </div>
+                <div class="card-body">
+
+                    <form method="POST" action="/conelpicoasi">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" name="Nombre" value="" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="fecha" class="form-label">Fecha de realización:</label>
+                            <input type="text" class="form-control" id="fecha" name="Fecha" value="" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="estado" class="form-label">Estado: </label>
+                            <select class="form-select" id="estado" name="Estado">
+                                <option disabled selected>Seleccione una opcion</option>
+
+                                <option value="0">Activo</option>
+
+                                <option value="1">Inactivo</option>
+
+
+                            </select>
+                        </div>
+
+                        {{#if editMode}}
+
+                        <input type="hidden" name="partidoId" value="{{partido.Id}}">
+
+                        {{/if}}
+
+
+                        <button type="submit" class="btn btn-primary">{{#if
+                            editMode}}Editar{{else}}Crear{{/if}}</button>
+                        <a href="/elecciones" type="button" class="btn btn-primary">Back</a>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="/assets/js/bootstrap/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

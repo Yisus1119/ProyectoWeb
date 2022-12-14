@@ -1,5 +1,15 @@
 const Candidatos = require("../model/Candidatos");
 
+exports.CandidatosEnum = () => {
+    return (
+        {
+            Presidente: 'Presidente',
+            Vicepresidente: 'Vicepresidente',
+            Alcalde: 'Alcalde',
+            Diputado: 'Diputado'
+        }
+    )
+}
 
 exports.GetCandidatosList = (req, res, next) => {
 
@@ -7,12 +17,13 @@ exports.GetCandidatosList = (req, res, next) => {
 
         const candidatosList = result.map((result) => result.dataValues) //iteramos, y mapeamos los datos para listar los datos
 
-        res.render("admin/candidatoAdmin/candidato-list", { 
-            pageTitle: "Candidatos", 
-            titulo: "Lista de candidatos", 
-            homeActive: true, 
-            candidatosList: candidatosList, 
-            admin: true });
+        res.render("admin/candidatoAdmin/candidato-list", {
+            pageTitle: "Candidatos",
+            titulo: "Lista de candidatos",
+            homeActive: true,
+            candidatosList: candidatosList,
+            admin: true
+        });
 
     }).catch(err => {
         console.log(err)
@@ -58,7 +69,7 @@ exports.GetEditCandidatos = (req, res, next) => {
         return res.redirect("/candidatos");
     }
 
-    Candidatos.findOne({ where: { Id:idCandidatos } }).then(result => {
+    Candidatos.findOne({ where: { Id: idCandidatos } }).then(result => {
         const candidato = result.dataValues
 
 
@@ -66,13 +77,14 @@ exports.GetEditCandidatos = (req, res, next) => {
             return res.redirect("/candidatos")
         }
 
-        res.render("admin/candidatoAdmin/save-candidato", { 
-            pageTitle: "Editar Candidatos", 
-            titulo: "Lista de candidatos", 
-            editMode: edit, 
-            candidato:candidato,
-            homeActive: true, 
-            admin: true });
+        res.render("admin/candidatoAdmin/save-candidato", {
+            pageTitle: "Editar Candidatos",
+            titulo: "Lista de candidatos",
+            editMode: edit,
+            candidato: candidato,
+            homeActive: true,
+            admin: true
+        });
 
     }).catch(err => {
         console.log(err)
@@ -92,8 +104,8 @@ exports.PostEditCandidatos = (req, res, next) => {
 
     Candidatos.update({ Nombre: nombre, Apellido: apellido, PartidoPerteneciente: partido, Puesto: puesto, FotoPerfil: foto, Estado: estado },
         { where: { Id: idCandidatos } }
-        
-        )
+
+    )
         .then((result) => {
             return res.redirect("/candidatos")
         }).catch(err => {

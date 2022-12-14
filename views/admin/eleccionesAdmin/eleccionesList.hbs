@@ -1,0 +1,40 @@
+<main>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <p>
+                    <a href="/elecform" class="btn btn-primary">Crear nueva elección</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div>
+
+
+        <div class="row">
+
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha de realización</th>
+                        <th scope="col">Estado</th>
+                    </tr>
+                </thead>
+                {{#each eleccionesList as |elecciones|}}
+                <tr>
+                    <th scope="row">{{elecciones.Id}}</th>
+                    <td>{{elecciones.Nombre}}</td>
+                    <td>{{elecciones.FechaRealizacion}}</td>
+                    <td>{{elecciones.Estado}}</td>
+                </tr>
+                {{/each}}
+            </table>
+
+        </div>
+    </div>
+
+
+</main>

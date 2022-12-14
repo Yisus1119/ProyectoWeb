@@ -1,1 +1,0 @@
-const candidatoModel = require("../model/Candidatos");
