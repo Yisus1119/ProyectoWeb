@@ -3,6 +3,7 @@ const router = express.Router();
 
 const clientController = require("../controller/clientController");
 const loginController = require("../controller/loginClientController");
+const seleccionController = require("../controller/seleccionController");
 
 //este sera el metodo para validar la cedula
 router.get("/buscar", loginController.GetLoginClient);
@@ -16,6 +17,8 @@ router.get("/presidentes", clientController.GetPresidentList)
 router.get("/vicepresidentes", clientController.GetViceList)
 router.get("/alcalde", clientController.GetAlcaldeList)
 router.get("/diputado", clientController.GetDiputadoList)
+
+router.post("/algo", seleccionController.postCiudadano);
 
 
 

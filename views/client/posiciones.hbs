@@ -30,7 +30,7 @@
                 <h5 class="card-title">{{ this.dataValues.Nombre }}</h5>
                 <p class="card-text">{{ this.dataValues.PartidoPerteneciente }}</p>
                 <p class="card-text">{{ this.dataValues.Puesto }}</p>
-                <form method="post" action="#">
+                <form method="post" action="/algo">
                     <center> <button type="submit" id="insertarVotacion" class="btn btn-primary btn-lg">Votar</button>
                     </center>
                 </form>
@@ -38,6 +38,6 @@
         </div>
         {{/each}}
     </div>
-        <a href="/votar" class="btn btn-primary">Volver </a>
+    <a href="/votar" class="btn btn-primary">Volver </a>
 
 </html>
