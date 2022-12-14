@@ -47,11 +47,11 @@
         <div class="mb-3">
             <label for="estado" class="form-label">Estado: </label>
             <select class="form-select" id="estado" name="Estado">
-              <option selected>Seleccione una opcion</option>
+              <option selected>{{#if editMode}}{{ciudadano.Estado}}{{/if}}</option>
 
-                  <option selected value="1">Activo</option>
+                  <option selected value="0">Activo</option>
                   
-                  <option value="2">Inactivo</option>
+                  <option value="1">Inactivo</option>
                  
                  
            
@@ -63,7 +63,7 @@
             <input type="hidden" name="ciudadanoId" value="{{ciudadano.DocumentoIdentidad}}">
 
             {{/if}}
-         <button type="submit" class="btn btn-primary">Add</button>
+         <button type="submit" class="btn btn-primary">{{#if editMode}}Editar{{else}}Crear{{/if}}</button>
           <a href="/ciudadanos" type="button" class="btn btn-primary">Back</a>
          </form>  
     </div>

@@ -42,11 +42,11 @@
             <div class="mb-3">
               <label for="estado" class="form-label">Estado: </label>
               <select class="form-select" id="estado" name="Estado">
-                <option selected>Seleccione una opcion</option>
+                <option selected>{{#if editMode}}{{partido.Estado}}{{/if}}</option>
 
-                <option selected value="1">Activo</option>
+                <option selected value="0">Activo</option>
 
-                <option value="2">Inactivo</option>
+                <option value="1">Inactivo</option>
 
 
               </select>

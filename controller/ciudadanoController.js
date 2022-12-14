@@ -83,7 +83,7 @@ exports.PostEditCiudadanos = (req, res, next) => {
 
     Ciudadanos.update(
         { DocumentoIdentidad: ciudadanosIndentidad, Nombre: ciudadanosName, Apellido: ciudadanosApellido, Email: ciudadanosEmail, Estado: ciudadanosEstado, },
-        { where: { DocumentoIdentidad: ciudadanoId } }
+        { where: {DocumentoIdentidad: ciudadanoId } }
     )
         .then((result) => {
             return res.redirect("/ciudadanos");
