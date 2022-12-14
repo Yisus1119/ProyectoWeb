@@ -18,11 +18,11 @@ const Candidato = sequelize.define("Candidatos", {
         allowNull: false,
     },
     PartidoPerteneciente: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     Puesto: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     FotoPerfil: {
